@@ -1,7 +1,7 @@
 WIP offshoot from Scorched Earth
 
 Test controls:
-- 'b' and mouse adds bullets to scene that are affected by gravity.
+- 'b' adds bullets to scene that are affected by gravity.
 - right-click adds planetary objects to the scene.
 
 Running the simulation:
