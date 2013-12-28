@@ -21,48 +21,48 @@ static GLuint u_color;
 //---------------//
 void drawPlanet(GLuint planetVBO, glm::vec2 pos, GLfloat rot)
 {
-	if (GL_FALSE == glIsBuffer(planetVBO))
-	{
-		// Display warning.
-		return;
-	}
+    if (GL_FALSE == glIsBuffer(planetVBO))
+    {
+        // Display warning.
+        return;
+    }
 
-	using namespace glm;
-	mat4 mMat = translate(globalTranslation, vec3(pos, drawLayer));
-	if (0.0f != rot) mMat = glm::rotate(mMat, rot, vec3(0.0f, 0.0f, 1.0f));
+    using namespace glm;
+    mat4 mMat = translate(globalTranslation, vec3(pos, drawLayer));
+    if (0.0f != rot) mMat = glm::rotate(mMat, rot, vec3(0.0f, 0.0f, 1.0f));
     glUniformMatrix4fv(u_modelview, 1, GL_FALSE, value_ptr(mMat));
-	glBindBuffer(GL_ARRAY_BUFFER, planetVBO);
-	glEnableVertexAttribArray(a_position);
-	glVertexAttribPointer(a_position, 2, GL_FLOAT, GL_FALSE, 0, 0);
-	glDrawArrays(GL_TRIANGLE_FAN, 0, NUM_PLANET_VERTS+2);
-	glDisableVertexAttribArray(a_position);
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
+    glBindBuffer(GL_ARRAY_BUFFER, planetVBO);
+    glEnableVertexAttribArray(a_position);
+    glVertexAttribPointer(a_position, 2, GL_FLOAT, GL_FALSE, 0, 0);
+    glDrawArrays(GL_TRIANGLE_FAN, 0, NUM_PLANET_VERTS+2);
+    glDisableVertexAttribArray(a_position);
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
 void drawWirePlanet(GLuint planetVBO, glm::vec2 pos, GLfloat rot)
 {
-	if (GL_FALSE == glIsBuffer(planetVBO))
-	{
-		// Display warning.
-		return;
-	}
+    if (GL_FALSE == glIsBuffer(planetVBO))
+    {
+        // Display warning.
+        return;
+    }
 
-	using namespace glm;
-	mat4 mMat = translate(globalTranslation, vec3(pos, drawLayer));
-	if (0.0f != rot) mMat = rotate(mMat, rot, vec3(0.0f, 0.0f, 1.0f));
+    using namespace glm;
+    mat4 mMat = translate(globalTranslation, vec3(pos, drawLayer));
+    if (0.0f != rot) mMat = rotate(mMat, rot, vec3(0.0f, 0.0f, 1.0f));
     glUniformMatrix4fv(u_modelview, 1, GL_FALSE, value_ptr(mMat));
-	glBindBuffer(GL_ARRAY_BUFFER, planetVBO);
-	glEnableVertexAttribArray(a_position);
-	glVertexAttribPointer(a_position, 2, GL_FLOAT, GL_FALSE, 0, 0);
-	glDrawArrays(GL_LINE_LOOP, 1, NUM_PLANET_VERTS);
-	glDisableVertexAttribArray(a_position);
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
+    glBindBuffer(GL_ARRAY_BUFFER, planetVBO);
+    glEnableVertexAttribArray(a_position);
+    glVertexAttribPointer(a_position, 2, GL_FLOAT, GL_FALSE, 0, 0);
+    glDrawArrays(GL_LINE_LOOP, 1, NUM_PLANET_VERTS);
+    glDisableVertexAttribArray(a_position);
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
 void drawLine(glm::vec2 p0, glm::vec2 p1)
 {
     using namespace glm;
-	mat4 mMat = translate(globalTranslation, vec3(0.0f, 0.0f, drawLayer));
+    mat4 mMat = translate(globalTranslation, vec3(0.0f, 0.0f, drawLayer));
     glUniformMatrix4fv(u_modelview, 1, GL_FALSE, value_ptr(mMat));
     const GLfloat linePoints[] = {p0[0], p0[1], p1[0], p1[1]};
     glVertexAttribPointer(a_position, 2, GL_FLOAT, GL_FALSE, 0, linePoints);
@@ -73,17 +73,17 @@ void drawLine(glm::vec2 p0, glm::vec2 p1)
 
 void drawSquare(GLfloat width, glm::vec2 pos)
 {
-	drawRectangle(width, width, pos);
+    drawRectangle(width, width, pos);
 }
 
 void drawWireSquare(GLfloat width, glm::vec2 pos)
 {
-	drawWireRectangle(width, width, pos);
+    drawWireRectangle(width, width, pos);
 }
 
 void drawRectangle(GLfloat width, GLfloat height, glm::vec2 pos)
 {
-	using namespace glm;
+    using namespace glm;
     mat4 mMat = translate(globalTranslation, vec3(pos, drawLayer));
     mMat = scale(mMat, vec3(width, height, 0.0f));
     glUniformMatrix4fv(u_modelview, 1, GL_FALSE, value_ptr(mMat));
@@ -139,10 +139,10 @@ void drawWireCircle(GLfloat rad, glm::vec2 pos)
 
 void drawTriangleFan(GLfloat *vertData, GLuint vertCount, glm::vec2 pos)
 {
-	using namespace glm;
-	mat4 mMat = translate(globalTranslation, vec3(pos, drawLayer));
-	glUniformMatrix4fv(u_modelview, 1, GL_FALSE, value_ptr(mMat));
-	const GLfloat *data = vertData;
+    using namespace glm;
+    mat4 mMat = translate(globalTranslation, vec3(pos, drawLayer));
+    glUniformMatrix4fv(u_modelview, 1, GL_FALSE, value_ptr(mMat));
+    const GLfloat *data = vertData;
     glVertexAttribPointer(a_position, 2, GL_FLOAT, GL_FALSE, 0, vertData);
     glEnableVertexAttribArray(a_position);
     glDrawArrays(GL_TRIANGLE_FAN, 0, vertCount);
@@ -154,23 +154,23 @@ void drawTriangleFan(GLfloat *vertData, GLuint vertCount, glm::vec2 pos)
 //---------------//
 void setDrawLayer(GLuint layer)
 {
-	if (layer >= NUM_DRAW_LAYERS) layer = NUM_DRAW_LAYERS-1;
-	drawLayer = layer/float(NUM_DRAW_LAYERS);
+    if (layer >= NUM_DRAW_LAYERS) layer = NUM_DRAW_LAYERS-1;
+    drawLayer = layer/float(NUM_DRAW_LAYERS);
 }
 
 void setDrawColor(glm::vec3 color)
 {
-	glUniform4fv(u_color, 1, glm::value_ptr(glm::vec4(color, 1.0f)));
+    glUniform4fv(u_color, 1, glm::value_ptr(glm::vec4(color, 1.0f)));
 }
 
 void setDrawColor(glm::vec4 color)
 {
-	glUniform4fv(u_color, 1, glm::value_ptr(color));
+    glUniform4fv(u_color, 1, glm::value_ptr(color));
 }
 
 void setShaderHandles(GLuint shaderID)
 {
-	a_position = glGetAttribLocation(shaderID, "position");
+    a_position = glGetAttribLocation(shaderID, "position");
     u_modelview = glGetUniformLocation(shaderID, "modelview");
     u_viewport = glGetUniformLocation(shaderID, "viewport");
     u_projection = glGetUniformLocation(shaderID, "projection");
@@ -194,12 +194,12 @@ void genRandomFractalMap(float range, int x0, int xn, float *map)
     float val = range*(float(rand())/RAND_MAX-0.5); 
     
     if (xn - x0 <= 5)
-	{
+    {
         for (int i = x0; i < xn; ++i)
-		{
+        {
             map[i] = (map[x0] + map[xn])/2;
-		}
-	}
+        }
+    }
     else
     {   
         map[xm] = map[xm] + val + (map[x0]+map[xn])/2;
@@ -210,9 +210,9 @@ void genRandomFractalMap(float range, int x0, int xn, float *map)
 
 GLfloat *createPlanetData(GLfloat maxRad)
 {
-	GLfloat *ranMap = new GLfloat[NUM_PLANET_VERTS];
-	for (int i = 0; i < NUM_PLANET_VERTS; ++i) ranMap[i] = 0;
-	genRandomFractalMap(1.0f, 0, NUM_PLANET_VERTS-1, ranMap);
+    GLfloat *ranMap = new GLfloat[NUM_PLANET_VERTS];
+    for (int i = 0; i < NUM_PLANET_VERTS; ++i) ranMap[i] = 0;
+    genRandomFractalMap(1.0f, 0, NUM_PLANET_VERTS-1, ranMap);
 
     double theta = 0.0;
     double radIncrement = 2.0*PI/double(NUM_PLANET_VERTS);
@@ -225,21 +225,21 @@ GLfloat *createPlanetData(GLfloat maxRad)
     // The rest of the points along the circumference.
     for (int i = 0; i < NUM_PLANET_VERTS; ++i)
     {   
-		// i = NUM_PLANET_VERTS-1
-		// planetData[2*NUM_PLANET_VERTS]
-		// planetData[2*NUM_PLANET_VERTS+1]
+        // i = NUM_PLANET_VERTS-1
+        // planetData[2*NUM_PLANET_VERTS]
+        // planetData[2*NUM_PLANET_VERTS+1]
 
-       	//planetData[2*i+2] = cos(theta); // x
+           //planetData[2*i+2] = cos(theta); // x
         //planetData[2*i+3] = sin(theta); // y
 
-       	planetData[2*i+2] = cos(theta)*(1+ranMap[i]); // x
+           planetData[2*i+2] = cos(theta)*(1+ranMap[i]); // x
         planetData[2*i+3] = sin(theta)*(1+ranMap[i]); // y
         theta += radIncrement;
 
         // Find the length of this vector:
-		using glm::distance;
-		using glm::vec2;
-		GLfloat len =  distance(vec2(planetData[2*i+2], planetData[2*i+3]), vec2(0.0f));
+        using glm::distance;
+        using glm::vec2;
+        GLfloat len =  distance(vec2(planetData[2*i+2], planetData[2*i+3]), vec2(0.0f));
         if (len > maxLen) maxLen = len; 
     }       
 
@@ -344,7 +344,7 @@ void createSquareVBO()
 //----------------------------------//
 void cleanBuffers()
 {
-	if (GL_INVALID_VALUE != circleVBO) glDeleteBuffers(1, &circleVBO);
+    if (GL_INVALID_VALUE != circleVBO) glDeleteBuffers(1, &circleVBO);
     if (GL_INVALID_VALUE != squareVBO) glDeleteBuffers(1, &squareVBO);
 }
 

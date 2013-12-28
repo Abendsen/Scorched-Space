@@ -13,15 +13,15 @@
 class satellite
 {
 public:
-	satellite() {/*Does nothing*/}
-	virtual ~satellite() {/*Does nothing*/}
-	virtual void draw() const {/*Does nothing*/}
+    satellite() {/*Does nothing*/}
+    virtual ~satellite() {/*Does nothing*/}
+    virtual void draw() const {/*Does nothing*/}
 
-	// Attributes:
-	GLfloat mass;
-	glm::vec2 pos;
-	glm::vec2 vel;
-	glm::vec3 color;
+    // Attributes:
+    GLfloat mass;
+    glm::vec2 pos;
+    glm::vec2 vel;
+    glm::vec3 color;
 private:
 };
 
@@ -31,22 +31,22 @@ private:
 class planet : public satellite
 {
 public:
-	planet();
-	planet(GLfloat imaxRad, glm::vec2 ipos);
-	~planet();
-	void clean();
-	GLfloat* getPlanetData() const;
-	void changePlanetGraphic(GLfloat nmaxRad);
-	void draw() const;
+    planet();
+    planet(GLfloat imaxRad, glm::vec2 ipos);
+    ~planet();
+    void clean();
+    GLfloat* getPlanetData() const;
+    void changePlanetGraphic(GLfloat nmaxRad);
+    void draw() const;
 
-	// Public attributes:
-	GLfloat orient;	  // rotation about z-axis
-	GLfloat rotSpeed; // rotation speed
-	GLfloat maxRad;   // maximum radius from center
+    // Public attributes:
+    GLfloat orient;      // rotation about z-axis
+    GLfloat rotSpeed; // rotation speed
+    GLfloat maxRad;   // maximum radius from center
 private:
-	// Private attributes:
-	GLuint planetVBO;
-	GLfloat *planetData;
+    // Private attributes:
+    GLuint planetVBO;
+    GLfloat *planetData;
 };
 
 //--------------//
@@ -55,15 +55,15 @@ private:
 class bullet : public satellite
 {
 public:
-	bullet();
-	bullet(glm::vec2 ipos, glm::vec2 ivel);
-	~bullet();
-	void draw() const;
+    bullet();
+    bullet(glm::vec2 ipos, glm::vec2 ivel);
+    ~bullet();
+    void draw() const;
 
-	// Attributes:
-	GLfloat rad;
-	GLfloat startTime;
-	bool onPlanet;
+    // Attributes:
+    GLfloat rad;
+    GLfloat startTime;
+    bool onPlanet;
 private:
 
 };
