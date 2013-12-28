@@ -5,7 +5,7 @@ Test controls:
 - right-click adds planetary objects to the scene.
 
 Running the simulation:
-sudo apt-get update
-sudo apt-get install freeglut3-dev libglm-dev libglew-dev
-make
-./main
+- $ sudo apt-get update
+- $ sudo apt-get install freeglut3-dev libglm-dev libglew-dev
+- $ make
+- $ ./main
