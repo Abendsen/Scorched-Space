@@ -2,6 +2,8 @@
 #include "CollisionDetector.hpp"
 
 // Check for a collision between a planet and bullet type object.
+//just this line
+
 bool CollisionDetector::checkCollision(const planet &p, const bullet &b)
 {
     bool collision = false;
