@@ -13,10 +13,10 @@
 #define NUM_PLANET_VERTS 18    // Does not include the center! At least 3.
 
 // Game objects:
-#define MAX_PLANET 10 
+#define MAX_PLANET 5
 #define MAX_BULLET 1000
 #define PLANET_MASS 1E7
 #define MAX_BULLET_SPEED 25.0f
-#define MAX_ROTATION 5 
+#define MAX_ROTATION 25 
 
 #endif
